@@ -68,7 +68,7 @@ enum TabBarPage {
     }
 }
 
-protocol TabBarCoordinatorProtocol: AppCoordinator {
+protocol TabBarCoordinatorProtocol: CoordinatorProtocol {
     
     var tabBarController: UITabBarController { get set }
     
@@ -79,14 +79,14 @@ protocol TabBarCoordinatorProtocol: AppCoordinator {
     func currentPage() -> TabBarPage?
 }
 
-class TabBarCoordinator: Coordinator {
+class TabBarCoordinator: CoordinatorProtocol {
     weak var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
     var tabBarController: UITabBarController
     
-    var childCoordinators: [Coordinator] = []
+    var childCoordinators: [CoordinatorProtocol] = []
     
     var type: CoordinatorType { .tab }
     
@@ -119,7 +119,7 @@ class TabBarCoordinator: Coordinator {
                                                 tag: page.pageOrderNumber())
         switch page {
         case .main:
-            let mainVC = ViewController()
+            let mainVC = MainViewController()
             navController.pushViewController(mainVC, animated: true)
         case .favourite:
             break

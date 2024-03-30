@@ -9,10 +9,10 @@ import UIKit
 
 // MARK: - Coordinator
 
-protocol Coordinator: AnyObject {
+protocol CoordinatorProtocol: AnyObject {
     var finishDelegate: CoordinatorFinishDelegate? { get set }
     var navigationController: UINavigationController { get set }
-    var childCoordinators: [Coordinator] { get set }
+    var childCoordinators: [CoordinatorProtocol] { get set }
     var type: CoordinatorType { get }
     
     func start()
@@ -21,7 +21,7 @@ protocol Coordinator: AnyObject {
     init(_ navigationController: UINavigationController)
 }
 
-extension Coordinator {
+extension CoordinatorProtocol {
     func finish() {
         childCoordinators.removeAll()
         finishDelegate!.coordinatorDidFinish(childCoordinator: self)
@@ -31,11 +31,11 @@ extension Coordinator {
 // MARK: - CoordinatorOutput
 
 protocol CoordinatorFinishDelegate: AnyObject {
-    func coordinatorDidFinish(childCoordinator: Coordinator)
+    func coordinatorDidFinish(childCoordinator: CoordinatorProtocol)
 }
 
 // MARK: - CoordinatorType
 
 enum CoordinatorType {
-    case app, main, tab
+    case app, main, tab, splash
 }

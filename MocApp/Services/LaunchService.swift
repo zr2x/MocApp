@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct FirstLaunchService {
+    
+    private let isFirstLaunchKey = "FirstLogin"
+    
+    func isFirstLaunch() -> Bool {
+        return arc4random_uniform(2) == 0
+    }
+}
