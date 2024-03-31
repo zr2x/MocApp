@@ -18,6 +18,9 @@
 		C05CB0522BB0813000A97166 /* LaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0512BB0813000A97166 /* LaunchService.swift */; };
 		C05CB0572BB5DD8600A97166 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0562BB5DD8600A97166 /* SplashCoordinator.swift */; };
 		C09C4E192BB7D90B002C7EEB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E182BB7D90B002C7EEB /* SplashViewController.swift */; };
+		C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */; };
+		C09C4E242BB7E65F002C7EEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C09C4E232BB7E65F002C7EEB /* SnapKit */; };
+		C09C4E262BB81D6F002C7EEB /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E252BB81D6F002C7EEB /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,8 @@
 		C05CB0512BB0813000A97166 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
 		C05CB0562BB5DD8600A97166 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		C09C4E182BB7D90B002C7EEB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyService.swift; sourceTree = "<group>"; };
+		C09C4E252BB81D6F002C7EEB /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C09C4E242BB7E65F002C7EEB /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C05CB0512BB0813000A97166 /* LaunchService.swift */,
+				C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				C09C4E182BB7D90B002C7EEB /* SplashViewController.swift */,
+				C09C4E252BB81D6F002C7EEB /* SplashViewModel.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -194,6 +202,9 @@
 			dependencies = (
 			);
 			name = MocApp;
+			packageProductDependencies = (
+				C09C4E232BB7E65F002C7EEB /* SnapKit */,
+			);
 			productName = MocApp;
 			productReference = C05CB02D2BB06EC700A97166 /* MocApp.app */;
 			productType = "com.apple.product-type.application";
@@ -222,6 +233,9 @@
 				Base,
 			);
 			mainGroup = C05CB0242BB06EC700A97166;
+			packageReferences = (
+				C09C4E222BB7E65F002C7EEB /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C05CB02E2BB06EC700A97166 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,6 +266,8 @@
 				C05CB0572BB5DD8600A97166 /* SplashCoordinator.swift in Sources */,
 				C05CB0352BB06EC700A97166 /* MainViewController.swift in Sources */,
 				C09C4E192BB7D90B002C7EEB /* SplashViewController.swift in Sources */,
+				C09C4E262BB81D6F002C7EEB /* SplashViewModel.swift in Sources */,
+				C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */,
 				C05CB0312BB06EC700A97166 /* AppDelegate.swift in Sources */,
 				C05CB0502BB0783600A97166 /* TabBarCoordinator.swift in Sources */,
 				C05CB04E2BB0766800A97166 /* AppCoordinator.swift in Sources */,
@@ -464,6 +480,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C09C4E222BB7E65F002C7EEB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C09C4E232BB7E65F002C7EEB /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C09C4E222BB7E65F002C7EEB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C05CB0252BB06EC700A97166 /* Project object */;
 }

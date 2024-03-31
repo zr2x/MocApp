@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
+    let dependencyService: DependencyService? = nil
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -26,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(navVC)
         appCoordinator?.start()
         
+        dependencyService?.configureDependencies()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
