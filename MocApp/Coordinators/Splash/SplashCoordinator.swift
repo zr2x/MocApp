@@ -1,5 +1,5 @@
 //
-//  SplashCoordinator.swift
+//  OnboardingCoordinator.swift
 //  MocApp
 //
 //  Created by Искандер Ситдиков on 28.03.2024.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-class SplashCoordinator: CoordinatorProtocol {
+class OnboardingCoordinator: CoordinatorProtocol {
     var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
     var childCoordinators: [CoordinatorProtocol] = []
     
-    var type: CoordinatorType { .splash }
+    var type: CoordinatorType { .onBorading }
     
     func start() {
-        let splashVC = SplashViewController()
-        navigationController.pushViewController(splashVC, animated: true)
+        let onboradingVC = OnboradingViewController()
+        navigationController.pushViewController(onboradingVC, animated: true)
     }
     
     required init(_ navigationController: UINavigationController) {
@@ -27,7 +27,7 @@ class SplashCoordinator: CoordinatorProtocol {
     }
 }
 
-extension SplashCoordinator: CoordinatorFinishDelegate {
+extension OnboardingCoordinator: CoordinatorFinishDelegate {
     
     func coordinatorDidFinish(childCoordinator: CoordinatorProtocol) {
         let tabBarCoordinator = TabBarCoordinator(navigationController)

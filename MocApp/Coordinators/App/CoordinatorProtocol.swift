@@ -37,5 +37,5 @@ protocol CoordinatorFinishDelegate: AnyObject {
 // MARK: - CoordinatorType
 
 enum CoordinatorType {
-    case app, main, tab, splash
+    case app, main, tab, onBorading
 }

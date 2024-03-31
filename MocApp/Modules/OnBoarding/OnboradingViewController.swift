@@ -1,5 +1,5 @@
 //
-//  SplashViewController.swift
+//  OnBoardingViewController.swift
 //  MocApp
 //
 //  Created by Искандер Ситдиков on 30.03.2024.
@@ -14,9 +14,9 @@ struct Appereance {
     static let sideMargin: CGFloat = 20.0
 }
 
-class SplashViewController: UIViewController {
+class OnboradingViewController: UIViewController {
     
-    let viewModel = SplashViewModelImp()
+    let viewModel: OnboardingViewModel = OnboardingViewModelImp()
     
     private let registrationButton: UIButton = {
         let button = UIButton()
@@ -39,7 +39,7 @@ class SplashViewController: UIViewController {
     // MARK: - Action
     
     @objc private func registrationDidTapped() {
-        view.backgroundColor = .red
+        viewModel.obtainRegistationModule()
     }
     
     // MARK: - Layout

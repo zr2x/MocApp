@@ -23,10 +23,10 @@ class AppCoordinator: CoordinatorProtocol {
 //        tabBarCoordinator.start()
 //        childCoordinators.append(tabBarCoordinator)
         
-        let splashCoordinator = SplashCoordinator(navigationController)
-        splashCoordinator.finishDelegate = self
-        splashCoordinator.start()
-        childCoordinators.append(splashCoordinator)
+        let onBoarding = OnboardingCoordinator(navigationController)
+        onBoarding.finishDelegate = self
+        onBoarding.start()
+        childCoordinators.append(onBoarding)
     }
     
     required init(_ navigationController: UINavigationController) {
