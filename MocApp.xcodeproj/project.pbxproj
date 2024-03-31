@@ -16,11 +16,13 @@
 		C05CB04E2BB0766800A97166 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB04D2BB0766800A97166 /* AppCoordinator.swift */; };
 		C05CB0502BB0783600A97166 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */; };
 		C05CB0522BB0813000A97166 /* LaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0512BB0813000A97166 /* LaunchService.swift */; };
-		C05CB0572BB5DD8600A97166 /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0562BB5DD8600A97166 /* SplashCoordinator.swift */; };
+		C05CB0572BB5DD8600A97166 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0562BB5DD8600A97166 /* OnboardingCoordinator.swift */; };
 		C09C4E192BB7D90B002C7EEB /* OnboradingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */; };
 		C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */; };
 		C09C4E242BB7E65F002C7EEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C09C4E232BB7E65F002C7EEB /* SnapKit */; };
 		C09C4E262BB81D6F002C7EEB /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E252BB81D6F002C7EEB /* OnboardingViewModel.swift */; };
+		C09C4E292BB9B9CE002C7EEB /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E282BB9B9CE002C7EEB /* RegistrationCoordinator.swift */; };
+		C09C4E2D2BB9BA76002C7EEB /* RegistraionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E2C2BB9BA76002C7EEB /* RegistraionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +37,12 @@
 		C05CB04D2BB0766800A97166 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		C05CB0512BB0813000A97166 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
-		C05CB0562BB5DD8600A97166 /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		C05CB0562BB5DD8600A97166 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboradingViewController.swift; sourceTree = "<group>"; };
 		C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyService.swift; sourceTree = "<group>"; };
 		C09C4E252BB81D6F002C7EEB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		C09C4E282BB9B9CE002C7EEB /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		C09C4E2C2BB9BA76002C7EEB /* RegistraionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistraionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,6 @@
 		C05CB0462BB0726500A97166 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				C05CB0552BB5DCE600A97166 /* Splash */,
 				C05CB0532BB5DCBC00A97166 /* App */,
 				C05CB0542BB5DCD600A97166 /* TabBar */,
 			);
@@ -122,6 +125,7 @@
 		C05CB04A2BB072E000A97166 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C09C4E272BB9B9BB002C7EEB /* Registration */,
 				C05CB04C2BB0730C00A97166 /* OnBoarding */,
 				C09C4E1A2BB7DC0E002C7EEB /* Main */,
 				C09C4E1C2BB7DC19002C7EEB /* Favourite */,
@@ -133,8 +137,9 @@
 		C05CB04C2BB0730C00A97166 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */,
+				C05CB0562BB5DD8600A97166 /* OnboardingCoordinator.swift */,
 				C09C4E252BB81D6F002C7EEB /* OnboardingViewModel.swift */,
+				C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -154,14 +159,6 @@
 				C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		C05CB0552BB5DCE600A97166 /* Splash */ = {
-			isa = PBXGroup;
-			children = (
-				C05CB0562BB5DD8600A97166 /* SplashCoordinator.swift */,
-			);
-			path = Splash;
 			sourceTree = "<group>";
 		};
 		C09C4E1A2BB7DC0E002C7EEB /* Main */ = {
@@ -184,6 +181,15 @@
 			children = (
 			);
 			path = Favourite;
+			sourceTree = "<group>";
+		};
+		C09C4E272BB9B9BB002C7EEB /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C09C4E282BB9B9CE002C7EEB /* RegistrationCoordinator.swift */,
+				C09C4E2C2BB9BA76002C7EEB /* RegistraionViewController.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,16 +269,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C05CB0522BB0813000A97166 /* LaunchService.swift in Sources */,
-				C05CB0572BB5DD8600A97166 /* SplashCoordinator.swift in Sources */,
+				C05CB0572BB5DD8600A97166 /* OnboardingCoordinator.swift in Sources */,
 				C05CB0352BB06EC700A97166 /* MainViewController.swift in Sources */,
 				C09C4E192BB7D90B002C7EEB /* OnboradingViewController.swift in Sources */,
 				C09C4E262BB81D6F002C7EEB /* OnboardingViewModel.swift in Sources */,
 				C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */,
 				C05CB0312BB06EC700A97166 /* AppDelegate.swift in Sources */,
+				C09C4E2D2BB9BA76002C7EEB /* RegistraionViewController.swift in Sources */,
 				C05CB0502BB0783600A97166 /* TabBarCoordinator.swift in Sources */,
 				C05CB04E2BB0766800A97166 /* AppCoordinator.swift in Sources */,
 				C05CB0482BB0727B00A97166 /* CoordinatorProtocol.swift in Sources */,
 				C05CB0332BB06EC700A97166 /* SceneDelegate.swift in Sources */,
+				C09C4E292BB9B9CE002C7EEB /* RegistrationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
