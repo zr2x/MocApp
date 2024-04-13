@@ -119,8 +119,8 @@ class AuthorizedFlowCoordinator: CoordinatorProtocol {
                                                 tag: page.pageOrderNumber())
         switch page {
         case .main:
-            let mainVC = MainViewController()
-            navController.pushViewController(mainVC, animated: true)
+            let mainCoordinator = MainCoordinator(navController)
+            mainCoordinator.start()
         case .favourite:
             break
         case .cart:

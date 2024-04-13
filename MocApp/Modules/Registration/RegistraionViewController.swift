@@ -17,6 +17,7 @@ class RegistraionViewController: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 10
+        textField.placeholder = "Введите email"
         return textField
     }()
     
@@ -24,6 +25,7 @@ class RegistraionViewController: UIViewController {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 10
+        textField.placeholder = "Введите пароль"
         return textField
     }()
     
@@ -98,7 +100,7 @@ class RegistraionViewController: UIViewController {
         skipRegistrationButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.bottom.equalTo(registrationButton.snp.top).offset(-20)
+            make.bottom.equalTo(registrationButton.snp.top).offset(-15)
         }
     }
     

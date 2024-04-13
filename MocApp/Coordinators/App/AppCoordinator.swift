@@ -14,19 +14,22 @@ class AppCoordinator: CoordinatorProtocol {
     var navigationController: UINavigationController
     
     var childCoordinators: [CoordinatorProtocol] = []
+    let launchService = FirstLaunchService()
     
     var type: CoordinatorType { .app }
     
     func start() {
-//        let tabBarCoordinator = TabBarCoordinator(navigationController)
-//        tabBarCoordinator.finishDelegate = self
-//        tabBarCoordinator.start()
-//        childCoordinators.append(tabBarCoordinator)
-        
-        let onBoarding = OnboardingCoordinator(navigationController)
-        onBoarding.finishDelegate = self
-        onBoarding.start()
-        childCoordinators.append(onBoarding)
+//        if launchService.isFirstLaunch() {
+            let onBoarding = OnboardingCoordinator(navigationController)
+            onBoarding.finishDelegate = self
+            onBoarding.start()
+            childCoordinators.append(onBoarding)
+//        } else {
+//            let tabBarCoordinator = AuthorizedFlowCoordinator(navigationController)
+//            tabBarCoordinator.finishDelegate = self
+//            tabBarCoordinator.start()
+//            childCoordinators.append(tabBarCoordinator)
+//        }
     }
     
     required init(_ navigationController: UINavigationController) {
