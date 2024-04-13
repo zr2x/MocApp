@@ -8,31 +8,31 @@
 import UIKit
 
 class OnboardingCoordinator: CoordinatorProtocol {
-    var finishDelegate: CoordinatorFinishDelegate?
-    
+    weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     
     var childCoordinators: [CoordinatorProtocol] = []
     
     var type: CoordinatorType { .onBorading }
     
-    func start() {
-        let onboradingVC = OnboradingViewController()
-        navigationController.pushViewController(onboradingVC, animated: true)
-    }
-    
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        navigationController.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func start() {
+        let viewModel = OnboardingViewModelImp {
+            let registrationCoordinator = RegistrationCoordinator(self.navigationController)
+            registrationCoordinator.start()
+            
+            //FIXME: fix handler
+        } skipRegistrationHandler: {
+            let mainCoordintator = MainCoordinator(self.navigationController)
+            mainCoordintator.start()
+        }
+
+
+        let onboradingVC = OnboradingViewController(viewModel: viewModel)
+        navigationController.pushViewController(onboradingVC, animated: true)
     }
 }
 
-extension OnboardingCoordinator: CoordinatorFinishDelegate {
-    
-    func coordinatorDidFinish(childCoordinator: CoordinatorProtocol) {
-        let tabBarCoordinator = TabBarCoordinator(navigationController)
-        tabBarCoordinator.finishDelegate = self
-        tabBarCoordinator.start()
-        childCoordinators.append(tabBarCoordinator)
-    }
-}

@@ -1,5 +1,5 @@
 //
-//  TabBarCoordinator.swift
+//  AuthorizedFlowCoordinator.swift
 //  MocApp
 //
 //  Created by Искандер Ситдиков on 24.03.2024.
@@ -68,7 +68,7 @@ enum TabBarPage {
     }
 }
 
-protocol TabBarCoordinatorProtocol: CoordinatorProtocol {
+protocol AuthorizedFlowCoordinatorProtocol: CoordinatorProtocol {
     
     var tabBarController: UITabBarController { get set }
     
@@ -79,7 +79,7 @@ protocol TabBarCoordinatorProtocol: CoordinatorProtocol {
     func currentPage() -> TabBarPage?
 }
 
-class TabBarCoordinator: CoordinatorProtocol {
+class AuthorizedFlowCoordinator: CoordinatorProtocol {
     weak var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController

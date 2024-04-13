@@ -8,7 +8,7 @@
 import UIKit
 
 class RegistrationCoordinator: CoordinatorProtocol {
-    var finishDelegate: CoordinatorFinishDelegate?
+    weak var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
@@ -17,8 +17,14 @@ class RegistrationCoordinator: CoordinatorProtocol {
     var type: CoordinatorType { .app }
     
     func start() {
-        let registrationVC = RegistraionViewController()
-        navigationController.pushViewController(registrationVC, animated: true)
+        
+        let viewModel: RegistrationViewModel = RegistrationViewModelImp {
+            let mainCoordinator = MainCoordinator(self.navigationController)
+            mainCoordinator.start()
+        }
+        
+        let registrationVC = RegistraionViewController(viewModel: viewModel)
+        navigationController.setViewControllers([registrationVC], animated: true)
     }
     
     required init(_ navigationController: UINavigationController) {

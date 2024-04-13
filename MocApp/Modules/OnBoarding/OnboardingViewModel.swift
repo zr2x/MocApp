@@ -9,19 +9,27 @@ import Foundation
 import UIKit
 
 protocol OnboardingViewModel {
-    var registrationCoordinator: RegistrationCoordinator? { get set }
+    init(registrationHandler: @escaping () -> Void, skipRegistrationHandler: @escaping () -> Void)
     
-    func obtainRegistationModule()
-    
+    func registrationButtonDidTapped()
+    func skipRegistrationButtonDidTapped()
 }
 
 class OnboardingViewModelImp: OnboardingViewModel {
     
-    lazy var navVC = UINavigationController()
-    
-    weak var registrationCoordinator: RegistrationCoordinator?
+    private let registrationHandler: () -> Void
+    private let skipRegistrationHandler: () -> Void
 
-    func obtainRegistationModule() {
-        registrationCoordinator?.start()
+    required init(registrationHandler: @escaping () -> Void, skipRegistrationHandler: @escaping () -> Void) {
+        self.registrationHandler = registrationHandler
+        self.skipRegistrationHandler = skipRegistrationHandler
+    }
+    
+    func registrationButtonDidTapped() {
+        registrationHandler()
+    }
+    
+    func skipRegistrationButtonDidTapped() {
+        skipRegistrationHandler()
     }
 }

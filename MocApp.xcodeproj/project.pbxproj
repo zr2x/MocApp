@@ -14,9 +14,12 @@
 		C05CB03D2BB06EC800A97166 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05CB03B2BB06EC800A97166 /* LaunchScreen.storyboard */; };
 		C05CB0482BB0727B00A97166 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0472BB0727B00A97166 /* CoordinatorProtocol.swift */; };
 		C05CB04E2BB0766800A97166 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB04D2BB0766800A97166 /* AppCoordinator.swift */; };
-		C05CB0502BB0783600A97166 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */; };
+		C05CB0502BB0783600A97166 /* AuthorizedFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB04F2BB0783600A97166 /* AuthorizedFlowCoordinator.swift */; };
 		C05CB0522BB0813000A97166 /* LaunchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0512BB0813000A97166 /* LaunchService.swift */; };
 		C05CB0572BB5DD8600A97166 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05CB0562BB5DD8600A97166 /* OnboardingCoordinator.swift */; };
+		C0674D3C2BC59C8700E868F4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0674D3B2BC59C8700E868F4 /* MainCoordinator.swift */; };
+		C0674D3E2BC5AEDC00E868F4 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0674D3D2BC5AEDC00E868F4 /* MainViewModel.swift */; };
+		C06F51372BC712DB00E81DA8 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06F51362BC712DB00E81DA8 /* RegistrationViewModel.swift */; };
 		C09C4E192BB7D90B002C7EEB /* OnboradingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */; };
 		C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */; };
 		C09C4E242BB7E65F002C7EEB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C09C4E232BB7E65F002C7EEB /* SnapKit */; };
@@ -35,9 +38,12 @@
 		C05CB03E2BB06EC800A97166 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C05CB0472BB0727B00A97166 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		C05CB04D2BB0766800A97166 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		C05CB04F2BB0783600A97166 /* AuthorizedFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizedFlowCoordinator.swift; sourceTree = "<group>"; };
 		C05CB0512BB0813000A97166 /* LaunchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchService.swift; sourceTree = "<group>"; };
 		C05CB0562BB5DD8600A97166 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		C0674D3B2BC59C8700E868F4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		C0674D3D2BC5AEDC00E868F4 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		C06F51362BC712DB00E81DA8 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		C09C4E182BB7D90B002C7EEB /* OnboradingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboradingViewController.swift; sourceTree = "<group>"; };
 		C09C4E1F2BB7DF91002C7EEB /* DependencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyService.swift; sourceTree = "<group>"; };
 		C09C4E252BB81D6F002C7EEB /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
@@ -108,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C05CB0532BB5DCBC00A97166 /* App */,
-				C05CB0542BB5DCD600A97166 /* TabBar */,
+				C05CB0542BB5DCD600A97166 /* AuthorizedFlowCoordinator */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -153,18 +159,20 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		C05CB0542BB5DCD600A97166 /* TabBar */ = {
+		C05CB0542BB5DCD600A97166 /* AuthorizedFlowCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				C05CB04F2BB0783600A97166 /* TabBarCoordinator.swift */,
+				C05CB04F2BB0783600A97166 /* AuthorizedFlowCoordinator.swift */,
 			);
-			path = TabBar;
+			path = AuthorizedFlowCoordinator;
 			sourceTree = "<group>";
 		};
 		C09C4E1A2BB7DC0E002C7EEB /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				C05CB0342BB06EC700A97166 /* MainViewController.swift */,
+				C0674D3B2BC59C8700E868F4 /* MainCoordinator.swift */,
+				C0674D3D2BC5AEDC00E868F4 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -187,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				C09C4E282BB9B9CE002C7EEB /* RegistrationCoordinator.swift */,
+				C06F51362BC712DB00E81DA8 /* RegistrationViewModel.swift */,
 				C09C4E2C2BB9BA76002C7EEB /* RegistraionViewController.swift */,
 			);
 			path = Registration;
@@ -269,16 +278,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C05CB0522BB0813000A97166 /* LaunchService.swift in Sources */,
+				C0674D3C2BC59C8700E868F4 /* MainCoordinator.swift in Sources */,
 				C05CB0572BB5DD8600A97166 /* OnboardingCoordinator.swift in Sources */,
 				C05CB0352BB06EC700A97166 /* MainViewController.swift in Sources */,
 				C09C4E192BB7D90B002C7EEB /* OnboradingViewController.swift in Sources */,
+				C0674D3E2BC5AEDC00E868F4 /* MainViewModel.swift in Sources */,
 				C09C4E262BB81D6F002C7EEB /* OnboardingViewModel.swift in Sources */,
 				C09C4E202BB7DF91002C7EEB /* DependencyService.swift in Sources */,
 				C05CB0312BB06EC700A97166 /* AppDelegate.swift in Sources */,
 				C09C4E2D2BB9BA76002C7EEB /* RegistraionViewController.swift in Sources */,
-				C05CB0502BB0783600A97166 /* TabBarCoordinator.swift in Sources */,
+				C05CB0502BB0783600A97166 /* AuthorizedFlowCoordinator.swift in Sources */,
 				C05CB04E2BB0766800A97166 /* AppCoordinator.swift in Sources */,
 				C05CB0482BB0727B00A97166 /* CoordinatorProtocol.swift in Sources */,
+				C06F51372BC712DB00E81DA8 /* RegistrationViewModel.swift in Sources */,
 				C05CB0332BB06EC700A97166 /* SceneDelegate.swift in Sources */,
 				C09C4E292BB9B9CE002C7EEB /* RegistrationCoordinator.swift in Sources */,
 			);
