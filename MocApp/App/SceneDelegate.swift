@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator = AppCoordinator(navVC)
         appCoordinator?.start()
         
-        dependencyService?.configureDependencies()
+        dependencyService?.configureDependencies() // Move to AppDelegate and run earlier
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

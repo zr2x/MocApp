@@ -11,25 +11,24 @@ class OnboardingCoordinator: CoordinatorProtocol {
     weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     
-    var childCoordinators: [CoordinatorProtocol] = []
+    var childCoordinator: CoordinatorProtocol?
     
     var type: CoordinatorType { .onBorading }
     
-    required init(_ navigationController: UINavigationController) {
+    private let onRegistration: () -> Void
+    private let onSkipRegistration: () -> Void
+    
+    required init(_ navigationController: UINavigationController,
+                  onRegistration: @escaping () -> Void,
+                  onSkipRegistration: @escaping () -> Void) {
         self.navigationController = navigationController
+        self.onRegistration = onRegistration
+        self.onSkipRegistration = onSkipRegistration
     }
     
     func start() {
-        let viewModel = OnboardingViewModelImp {
-            let registrationCoordinator = RegistrationCoordinator(self.navigationController)
-            registrationCoordinator.start()
-            
-            //FIXME: fix handler
-        } skipRegistrationHandler: {
-            let mainCoordintator = MainCoordinator(self.navigationController)
-            mainCoordintator.start()
-        }
-
+        let viewModel = OnboardingViewModelImp(registrationHandler: onRegistration,
+                                               skipRegistrationHandler: onSkipRegistration)
 
         let onboradingVC = OnboradingViewController(viewModel: viewModel)
         navigationController.pushViewController(onboradingVC, animated: true)

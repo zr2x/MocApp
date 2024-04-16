@@ -12,18 +12,16 @@ import UIKit
 protocol CoordinatorProtocol: AnyObject {
     var finishDelegate: CoordinatorFinishDelegate? { get set }
     var navigationController: UINavigationController { get set }
-    var childCoordinators: [CoordinatorProtocol] { get set }
+    var childCoordinator: CoordinatorProtocol? { get set }
     var type: CoordinatorType { get }
     
     func start()
     func finish()
-    
-    init(_ navigationController: UINavigationController)
 }
 
 extension CoordinatorProtocol {
     func finish() {
-        childCoordinators.removeAll()
+        childCoordinator = nil
         finishDelegate!.coordinatorDidFinish(childCoordinator: self)
     }
 }

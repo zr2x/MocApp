@@ -25,7 +25,7 @@ class OnboradingViewController: UIViewController {
         button.setTitleColor(.systemBlue, for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
-        button.addTarget(nil, action: #selector(registrationDidTapped), for: .touchUpInside)
+        button.addTarget(nil, action: #selector(skipRegistrationDidTapped), for: .touchUpInside)
         return button
     }()
     

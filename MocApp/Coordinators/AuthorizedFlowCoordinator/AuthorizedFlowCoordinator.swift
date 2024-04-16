@@ -86,7 +86,7 @@ class AuthorizedFlowCoordinator: CoordinatorProtocol {
     
     var tabBarController: UITabBarController
     
-    var childCoordinators: [CoordinatorProtocol] = []
+    var childCoordinator: CoordinatorProtocol?
     
     var type: CoordinatorType { .tab }
     

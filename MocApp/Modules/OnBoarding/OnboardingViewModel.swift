@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 protocol OnboardingViewModel {
-    init(registrationHandler: @escaping () -> Void, skipRegistrationHandler: @escaping () -> Void)
-    
     func registrationButtonDidTapped()
     func skipRegistrationButtonDidTapped()
 }

@@ -12,7 +12,7 @@ class MainCoordinator: CoordinatorProtocol {
     
     var navigationController: UINavigationController
     
-    var childCoordinators: [CoordinatorProtocol] = []
+    var childCoordinator: CoordinatorProtocol?
     
     var type: CoordinatorType { .main}
     
