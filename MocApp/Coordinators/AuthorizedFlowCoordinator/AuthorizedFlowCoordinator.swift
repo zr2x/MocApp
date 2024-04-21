@@ -80,15 +80,12 @@ protocol AuthorizedFlowCoordinatorProtocol: CoordinatorProtocol {
 }
 
 class AuthorizedFlowCoordinator: CoordinatorProtocol {
-    weak var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
     var tabBarController: UITabBarController
     
     var childCoordinator: CoordinatorProtocol?
-    
-    var type: CoordinatorType { .tab }
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -124,7 +121,8 @@ class AuthorizedFlowCoordinator: CoordinatorProtocol {
         case .favourite:
             break
         case .cart:
-            break
+            let cartCoordinator = CardCoordinator(navController)
+            cartCoordinator.start()
         case .profile:
             break
         }

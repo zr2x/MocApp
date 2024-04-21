@@ -8,12 +8,9 @@
 import UIKit
 
 class OnboardingCoordinator: CoordinatorProtocol {
-    weak var finishDelegate: CoordinatorFinishDelegate?
     var navigationController: UINavigationController
     
     var childCoordinator: CoordinatorProtocol?
-    
-    var type: CoordinatorType { .onBorading }
     
     private let onRegistration: () -> Void
     private let onSkipRegistration: () -> Void

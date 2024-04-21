@@ -8,13 +8,10 @@
 import UIKit
 
 class MainCoordinator: CoordinatorProtocol {
-    var finishDelegate: CoordinatorFinishDelegate?
     
     var navigationController: UINavigationController
     
     var childCoordinator: CoordinatorProtocol?
-    
-    var type: CoordinatorType { .main}
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController

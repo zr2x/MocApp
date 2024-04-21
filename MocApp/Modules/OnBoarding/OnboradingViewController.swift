@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-struct Appereance {
+private struct Appereance {
     static let buttonHeight: CGFloat = 48.0
     static let bottomMargin: CGFloat = 12.0
     static let sideMargin: CGFloat = 20.0

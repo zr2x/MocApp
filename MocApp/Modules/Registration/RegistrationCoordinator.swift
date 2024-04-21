@@ -8,13 +8,9 @@
 import UIKit
 
 class RegistrationCoordinator: CoordinatorProtocol {
-    weak var finishDelegate: CoordinatorFinishDelegate?
-    
     var navigationController: UINavigationController
     
     var childCoordinator: CoordinatorProtocol?
-    
-    var type: CoordinatorType { .app }
     
     func start() {
         
