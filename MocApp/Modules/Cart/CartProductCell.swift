@@ -13,28 +13,64 @@ class CartProductCell: UITableViewCell {
     
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "tomato")
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
         return imageView
     }()
     
-    private let priceLabel: UILabel = {
+    private let productNameLabel: UILabel = {
         let label = UILabel()
-        
+        label.textAlignment = .left
+        label.text = "Perfect italian tomatoes"
         return label
     }()
     
-    private let stepper: UIStepper = {
-        let stepper = UIStepper()
-        stepper.minimumValue = 0
-        stepper.maximumValue = 100
-        return stepper
+    private let priceLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = "100 rub"
+        return label
+    }()
+    
+    private let decreaseAmountButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("-", for: .normal)
+        button.addTarget(nil, action: #selector(decreaseButtonDidTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private let increaseAmountButton: UIButton = {
+        let button = UIButton()
+//        button.backgroundColor = .systemBlue
+        button.setTitle("+", for: .normal)
+        button.addTarget(nil, action: #selector(increaseButtonDidTapped), for: .touchUpInside)
+        return button
     }()
     
     private let quantityLabel: UILabel = {
         let label = UILabel()
         label.text = "0"
-        label.textAlignment = .center
+        label.isUserInteractionEnabled = false
         return label
+    }()
+    
+    private let amountStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.backgroundColor = .lightGray
+        stack.layer.cornerRadius = 10
+        stack.distribution = .equalSpacing
+        return stack
+    }()
+    
+    private let productStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 10
+        stack.distribution = .fillEqually
+        return stack
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -47,14 +83,65 @@ class CartProductCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View hierarchy
+    
     private func setupUI() {
+        contentView.addSubview(productStackView)
+        contentView.addSubview(amountStackView)
         contentView.addSubview(productImageView)
-        contentView.addSubview(stepper)
-        contentView.addSubview(quantityLabel)
+        
+        productStackView.addArrangedSubview(productNameLabel)
+        productStackView.addArrangedSubview(priceLabel)
+        
+        amountStackView.addArrangedSubview(decreaseAmountButton)
+        amountStackView.addArrangedSubview(quantityLabel)
+        amountStackView.addArrangedSubview(increaseAmountButton)
     }
+    
+    
+    // MARK: - Layout
     
     private func setupConstraints() {
         
+        contentView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(150)
+        }
+        
+        productImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-20)
+            make.width.equalTo(75)
+        }
+        
+        productStackView.snp.makeConstraints { make in
+            make.leading.equalTo(productImageView.snp.trailing).inset(-20)
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(amountStackView.snp.top).offset(-10)
+        }
+        
+        amountStackView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().offset(-10)
+            make.height.equalTo(30)
+        }
+    }
+    
+    //MARK: - Action
+    
+    private func getCurrentQuantity() -> Int {
+        guard let currentQuantity = Int(quantityLabel.text ?? "0"), currentQuantity > 0 else { return 0 }
+        return currentQuantity
+    }
+    
+    @objc private func decreaseButtonDidTapped() {
+        self.quantityLabel.text = "\(getCurrentQuantity() - 1)"
+    }
+    
+    @objc private func increaseButtonDidTapped() {
+        self.quantityLabel.text = "\(getCurrentQuantity() + 1)"
     }
 }
 
