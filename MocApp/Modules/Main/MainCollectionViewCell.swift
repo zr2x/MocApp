@@ -15,7 +15,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "pencil")
+        imageView.image = UIImage(named: "tomato")
         return imageView
     }()
     
@@ -63,21 +63,21 @@ class MainCollectionViewCell: UICollectionViewCell {
             make.width.height.equalTo(200)
         }
         productImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().inset(10)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(100)
         }
         
         productNameLabel.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(10)
             make.top.equalTo(productImageView.snp.bottom).offset(20)
+            make.bottom.equalTo(addToCartButton.snp.top).offset(-5)
         }
         
         addToCartButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(10)
             make.bottom.equalToSuperview().inset(10)
-//            make.top.equalTo(productNameLabel.snp.bottom).offset(15)
-            make.height.equalTo(40)
+            make.height.equalTo(30)
         }
     }
 }
