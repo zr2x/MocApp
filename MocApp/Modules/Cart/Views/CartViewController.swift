@@ -9,8 +9,7 @@ import UIKit
 
 class CartViewController: UIViewController {
     
-    let viewModel: CartViewModel = CartViewModelImp()
-    
+    let viewModel: CartViewModel
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CartProductCell.self, forCellReuseIdentifier: CartProductCell.identifire)
@@ -18,11 +17,21 @@ class CartViewController: UIViewController {
         return tableView
     }()
     
+    init(viewModel: CartViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemMint
         setupTableView()
         setupConstraints()
+        viewModel.fetchProducts()
     }
     
     private func setupTableView() {
@@ -41,15 +50,15 @@ class CartViewController: UIViewController {
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        viewModel.cellViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CartProductCell.identifire, for: indexPath) as? CartProductCell else {
             return UITableViewCell()
         }
-        
-        
+        let cellViewModel = viewModel.cellViewModels[indexPath.row]
+        cell.configure(with: cellViewModel)
         return cell
     }
     

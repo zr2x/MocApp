@@ -19,17 +19,15 @@ class CartProductCell: UITableViewCell {
         return imageView
     }()
     
-    private let productNameLabel: UILabel = {
+    private var productNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "Perfect italian tomatoes"
         return label
     }()
     
-    private let priceLabel: UILabel = {
+    private var priceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "100 rub"
         return label
     }()
     
@@ -42,7 +40,6 @@ class CartProductCell: UITableViewCell {
     
     private let increaseAmountButton: UIButton = {
         let button = UIButton()
-//        button.backgroundColor = .systemBlue
         button.setTitle("+", for: .normal)
         button.addTarget(nil, action: #selector(increaseButtonDidTapped), for: .touchUpInside)
         return button
@@ -142,6 +139,25 @@ class CartProductCell: UITableViewCell {
     
     @objc private func increaseButtonDidTapped() {
         self.quantityLabel.text = "\(getCurrentQuantity() + 1)"
+    }
+    
+    public func configure(with viewModel: CartProductCellViewModel) {
+        self.productNameLabel.text = viewModel.name
+        self.priceLabel.text = viewModel.price
+
+        viewModel.fetchImage { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self.productImageView.image = image
+                }
+            case .failure:
+                // TODO: handle error
+                break
+            }
+        }
     }
 }
 

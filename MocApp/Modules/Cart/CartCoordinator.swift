@@ -19,7 +19,8 @@ class CardCoordinator: CoordinatorProtocol {
     
     
     func start() {
-        let cartVC = CartViewController()
+        let cartViewModel = CartViewModel()
+        let cartVC = CartViewController(viewModel: cartViewModel)
         navigationController.pushViewController(cartVC, animated: true)
     }
 }
