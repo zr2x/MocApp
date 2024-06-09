@@ -8,7 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
+    let viewModel: MainViewModel
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -17,11 +17,21 @@ class MainViewController: UIViewController {
         collectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifire)
         return collectionView
     }()
-
+    
+    init(viewModel: MainViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
+        viewModel.fetchData()
     }
     
     private func setupTableView() {
@@ -29,21 +39,22 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
 }
 
+//MARK: - CollectionLayout, CollectionDataSource
 extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = self.view.frame.width/2 - 15
-        return CGSize(width: size, height: size)
+        let width = self.view.frame.width/2 - 15
+        let height = self.view.frame.height / 2
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -61,10 +72,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifire, for: indexPath) as? MainCollectionViewCell else {
             return UICollectionViewCell() }
-        
-        
+        let cellViewModel = viewModel.cellViewModels[indexPath.row]
+        cell.configure(viewModel: cellViewModel)
         return cell
     }
 }
-
-
